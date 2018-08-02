@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: 
+  category: 
+  price: MyString
+  decimal: MyString
+
+two:
+  name: 
+  category: 
+  price: MyString
+  decimal: MyString
