@@ -4,4 +4,9 @@ class Item < ApplicationRecord
   validates :price, presence: true
   alias_attribute :label, :name
   validates :label, presence: true
+  validates_presence_of :slug
+
+  def to_param
+    slug
+  end
 end
