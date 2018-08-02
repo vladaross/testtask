@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
 
   # GET /todos
   def index
-    @items = Item.all
+    @items = Item.all.page params[:page]
     json_response(@items)
   end
 
