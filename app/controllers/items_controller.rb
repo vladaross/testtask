@@ -15,8 +15,10 @@ class ItemsController < ApplicationController
 
   # GET /items/:id
   def show
+    @item = Item.find_by_slug(params[:id])
     json_response(@items)
   end
+
 
   # PUT /items/:id
   def update
@@ -34,10 +36,10 @@ class ItemsController < ApplicationController
 
   def items_params
     # whitelist params
-    params.permit(:title, :created_by)
+    params.permit(:id, :name, :price, :title, :created_by)
   end
 
   def set_items
-    @items = Item.find(params[:id])
+    @items = Item.find_by_slug(params[:id])
   end
 end
