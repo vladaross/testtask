@@ -3,14 +3,8 @@ class ItemsController < ApplicationController
 
   # GET /todos
   def index
-    @items = Item.all.page params[:page]
+    @items = Item.all.order("category_id").page params[:page]
     json_response(@items)
-  end
-
-  # POST /items
-  def create
-    @items = Item.create!(items_params)
-    json_response(@items, :created)
   end
 
   # GET /items/:id
@@ -19,18 +13,6 @@ class ItemsController < ApplicationController
     json_response(@items)
   end
 
-
-  # PUT /items/:id
-  def update
-    @items.update(items_params)
-    head :no_content
-  end
-
-  # DELETE /items/:id
-  def destroy
-    @items.destroy
-    head :no_content
-  end
 
   private
 

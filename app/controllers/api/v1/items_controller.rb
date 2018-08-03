@@ -1,10 +1,14 @@
 class Api::V1::ItemsController < ApplicationController
   before_action :set_items, only: [:show, :update, :destroy]
-  
+
   # GET /todos
   def index
-    @items = Item.all.page params[:page]
-    json_response(@items)
+    if params[:category]
+      @items = Item.where(:category => params[:category]).page params[:page]
+      json_response(@items)
+    else
+      @items = Item.all
+    end
   end
 
   # POST /items
@@ -15,7 +19,7 @@ class Api::V1::ItemsController < ApplicationController
 
   # GET /items/:id
   def show
-    @item = Item.find_by_slug(params[:id])
+    @items = Item.find_by_slug(params[:id])
     json_response(@items)
   end
 
